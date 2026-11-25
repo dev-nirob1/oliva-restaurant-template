@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "preline/variant.css";
+@source "../../node_modules/preline/dist/*.js";
+
+@theme{--font-display:"Bricolage Grotesque",sans-serif;--font-sans:"Poppins",sans-serif;--color-ink:#15170f;--color-acc:#d9a441;--color-accd:#946510;--color-acch:#c18a22;--color-cream:#f8f4ea;--color-sand:#efe7d4;--color-line:#e6dcc6}
+@layer base{button:not(:disabled),summary,[role=button]:not(:disabled),label[for],select{cursor:pointer}html{scroll-behavior:smooth}body{font-family:"Poppins",sans-serif;color:#5b5a50;line-height:1.75;overflow-x:hidden}h1,h2,h3,h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.15;color:#15170f}}
+@layer components{
+.wrap{@apply mx-auto w-full max-w-[1200px] px-4 sm:px-5}
+.sec{@apply py-20 md:py-28}
+.h2{@apply font-display text-3xl font-semibold leading-tight text-ink md:text-5xl}
+.btn{@apply inline-flex items-center justify-center gap-2 rounded-md bg-acc px-7 py-3.5 font-semibold text-ink transition hover:bg-acch hover:text-ink}
+.btn-o{@apply border border-white/60 bg-transparent text-white hover:bg-white hover:text-ink}
+.btn-d{@apply bg-ink text-white hover:bg-accd hover:text-white}
+.btn-s{@apply px-5 py-2.5 text-sm}
+.inp{@apply w-full rounded-md border border-line bg-white px-4 py-3 text-ink placeholder:text-neutral-400 focus:border-acc focus:outline-none focus:ring-2 focus:ring-acc/30}
+.inp-d{@apply w-full rounded-md border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/50 focus:border-acc focus:outline-none focus:ring-2 focus:ring-acc/30}
+.lbl{@apply mb-1.5 block text-sm font-semibold text-ink}
+.tb{@apply border-b-2 border-transparent px-6 py-3 font-semibold text-neutral-500 transition hover:text-accd}
+.tb.active{@apply border-acc text-accd}}

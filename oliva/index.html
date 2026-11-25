@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Restaurant Template | Oliva</title>
+    <meta name="description"
+        content="Oliva restaurant template: menu, online ordering, reservations, gallery and blog.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme{--font-display:"Bricolage Grotesque",sans-serif;--font-sans:"Poppins",sans-serif;--color-ink:#15170f;--color-acc:#d9a441;--color-accd:#946510;--color-acch:#c18a22;--color-cream:#f8f4ea;--color-sand:#efe7d4;--color-line:#e6dcc6}
+@layer base{button:not(:disabled),summary,[role=button]:not(:disabled),label[for],select{cursor:pointer}html{scroll-behavior:smooth}body{font-family:"Poppins",sans-serif;color:#5b5a50;line-height:1.75;overflow-x:hidden}h1,h2,h3,h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.15;color:#15170f}}
+@layer components{
+.wrap{@apply mx-auto w-full max-w-[1200px] px-4 sm:px-5}
+.sec{@apply py-20 md:py-28}
+.h2{@apply font-display text-3xl font-semibold leading-tight text-ink md:text-5xl}
+.btn{@apply inline-flex items-center justify-center gap-2 rounded-md bg-acc px-7 py-3.5 font-semibold text-ink transition hover:bg-acch hover:text-ink}
+.btn-o{@apply border border-white/60 bg-transparent text-white hover:bg-white hover:text-ink}
+.btn-d{@apply bg-ink text-white hover:bg-accd hover:text-white}
+.btn-s{@apply px-5 py-2.5 text-sm}
+.inp{@apply w-full rounded-md border border-line bg-white px-4 py-3 text-ink placeholder:text-neutral-400 focus:border-acc focus:outline-none focus:ring-2 focus:ring-acc/30}
+.inp-d{@apply w-full rounded-md border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/50 focus:border-acc focus:outline-none focus:ring-2 focus:ring-acc/30}
+.lbl{@apply mb-1.5 block text-sm font-semibold text-ink}
+.tb{@apply border-b-2 border-transparent px-6 py-3 font-semibold text-neutral-500 transition hover:text-accd}
+.tb.active{@apply border-acc text-accd}}
+</style>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="hidden bg-black text-sm text-white/70 md:block">
+        <div class="wrap flex items-center justify-between py-2">
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-1"><span><i class="ri-phone-line mr-1 text-acc"></i>+1
+                    234 567 8900</span><span><i class="ri-map-pin-line mr-1 text-acc"></i>128 Maple Street, Brooklyn,
+                    NY</span></p>
+            <p class="flex items-center gap-4"><a href="#" aria-label="Facebook" class="hover:text-acc"><i
+                        class="ri-facebook-fill"></i></a><a href="#" aria-label="Instagram" class="hover:text-acc"><i
+                        class="ri-instagram-line"></i></a><a href="#" aria-label="X" class="hover:text-acc"><i
+                        class="ri-twitter-x-line"></i></a><a href="#" aria-label="YouTube" class="hover:text-acc"><i
+                        class="ri-youtube-line"></i></a></p>
+        </div>
+    </div>
+    <header class="sticky top-0 z-50 bg-ink text-white shadow-lg">
+        <div class="wrap flex flex-wrap items-center justify-between py-3 lg:py-0"><a href="index.html"
+                class="font-display text-3xl font-bold tracking-tight">Oliva<span class="text-acc">.</span></a>
+            <div class="flex items-center gap-2 sm:gap-3 lg:order-3"><a href="pages/cart.html"
+                    class="relative grid size-11 place-items-center rounded-full border border-white/20 text-xl transition hover:border-acc hover:text-acc"
+                    aria-label="Cart"><i class="ri-shopping-bag-3-line"></i><span
+                        class="cn absolute -right-1 -top-1 grid min-w-5 place-items-center rounded-full bg-acc px-1 text-[11px] font-bold text-ink">0</span></a><a
+                    href="pages/reservation.html" class="btn btn-s hidden sm:inline-flex">Book a table</a>
+                <button type="button"
+                    class="hs-collapse-toggle group grid size-11 place-items-center rounded-md border border-white/20 text-2xl lg:hidden"
+                    data-hs-collapse="#nv" aria-controls="nv" aria-label="Toggle menu"><i
+                        class="ri-menu-line group-aria-expanded:hidden"></i><i
+                        class="ri-close-line hidden group-aria-expanded:block"></i></button>
+            </div>
+            <nav id="nv"
+                class="hs-collapse hidden basis-full overflow-hidden transition-all duration-300 lg:order-2 lg:block lg:basis-auto"
+                aria-label="Main">
+                <ul
+                    class="flex flex-col border-t border-white/10 py-2 lg:flex-row lg:items-center lg:gap-9 lg:border-0 lg:py-0">
+                    <li><a class="block py-2 font-medium transition lg:py-6 text-acc" href="index.html">Home</a></li>
+                    <li><a class="block py-2 font-medium transition lg:py-6 hover:text-acc"
+                            href="pages/about.html">About</a></li>
+                    <li><a class="block py-2 font-medium transition lg:py-6 hover:text-acc"
+                            href="pages/menu.html">Menu</a></li>
+                    <li><a class="block py-2 font-medium transition lg:py-6 hover:text-acc"
+                            href="pages/gallery.html">Gallery</a></li>
+                    <li><a class="block py-2 font-medium transition lg:py-6 hover:text-acc"
+                            href="pages/blog.html">Blog</a></li>
+                    <li><a class="block py-2 font-medium transition lg:py-6 hover:text-acc"
+                            href="pages/contact.html">Contact</a></li>
+                    <li class="mt-2 sm:hidden"><a href="pages/reservation.html" class="btn btn-s w-full">Book a
+                            table</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hs swiper h-screen">
+            <div class="swiper-wrapper">
+                <div
+                    class="swiper-slide relative !flex h-[640px] items-center justify-center overflow-hidden md:h-screen">
+                    <img data-u="1517248135467-4c7edcad34c4" data-w="1800" alt=""
+                        class="absolute inset-0 size-full object-cover">
+                    <div class="absolute inset-0 bg-ink/60"></div>
+                    <div class="hc relative z-10 mx-auto max-w-2xl px-5 text-center text-white">
+                        <p class="text-lg font-medium text-acc">Welcome to Oliva</p>
+                        <h1 class="mt-3 text-4xl text-white md:text-6xl">Home of the best Italian food</h1>
+                        <p class="mt-5 text-white/80">Seasonal dishes, a wood fired oven and a warm table waiting for
+                            you.</p>
+                        <div class="mt-8 flex flex-wrap justify-center gap-3"><a class="btn" href="pages/menu.html">View
+                                menu</a><a class="btn btn-o" href="pages/reservation.html">Book a table</a></div>
+                    </div>
+                </div>
+                <div
+                    class="swiper-slide relative !flex h-[640px] items-center justify-center overflow-hidden md:h-screen">
+                    <img data-u="1565299624946-b28f40a0ae38" data-w="1800" alt=""
+                        class="absolute inset-0 size-full object-cover">
+                    <div class="absolute inset-0 bg-ink/60"></div>
+                    <div class="hc relative z-10 mx-auto max-w-2xl px-5 text-center text-white">
+                        <p class="text-lg font-medium text-acc">Fired in a wood oven</p>
+                        <h1 class="mt-3 text-4xl text-white md:text-6xl">Pizza the way it should be</h1>
+                        <p class="mt-5 text-white/80">Hand stretched dough, San Marzano tomatoes and fresh mozzarella.
+                        </p>
+                        <div class="mt-8 flex flex-wrap justify-center gap-3"><a class="btn"
+                                href="pages/menu.html">Order online</a></div>
+                    </div>
+                </div>
+                <div
+                    class="swiper-slide relative !flex h-[640px] items-center justify-center overflow-hidden md:h-screen">
+                    <img data-u="1544025162-d76694265947" data-w="1800" alt=""
+                        class="absolute inset-0 size-full object-cover">
+                    <div class="absolute inset-0 bg-ink/60"></div>
+                    <div class="hc relative z-10 mx-auto max-w-2xl px-5 text-center text-white">
+                        <p class="text-lg font-medium text-acc">Dinner, done properly</p>
+                        <h1 class="mt-3 text-4xl text-white md:text-6xl">Seasonal plates, slow evenings</h1>
+                        <p class="mt-5 text-white/80">Steaks, fresh fish and handmade pasta, cooked to order.</p>
+                        <div class="mt-8 flex flex-wrap justify-center gap-3"><a class="btn"
+                                href="pages/menu.html">Explore dishes</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev !hidden md:!flex"></div>
+            <div class="swiper-button-next !hidden md:!flex"></div>
+        </section>
+
+        <section class="relative z-10 -mt-14 px-5 md:-mt-16">
+            <div class="mx-auto grid max-w-[1100px] divide-y divide-line rounded-xl bg-white shadow-2xl md:grid-cols-3 md:divide-x md:divide-y-0"
+                data-aos="fade-up">
+                <div class="flex items-start gap-5 p-6 sm:p-8"><span
+                        class="grid size-14 shrink-0 place-items-center rounded-full bg-acc/15 text-accd"><svg
+                            class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
+                            <path d="M19 17l.7 1.8L21.5 19.5l-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7L19 17z" />
+                        </svg></span>
+                    <div>
+                        <h3 class="text-xl">Magical atmosphere</h3>
+                        <p class="mt-1 text-sm text-neutral-500">Warm light, soft music and a room made for long
+                            conversations.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-5 p-6 sm:p-8"><span
+                        class="grid size-14 shrink-0 place-items-center rounded-full bg-acc/15 text-accd"><svg
+                            class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" />
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+                        </svg></span>
+                    <div>
+                        <h3 class="text-xl">Best food quality</h3>
+                        <p class="mt-1 text-sm text-neutral-500">Fresh ingredients from local farms, prepared to order
+                            every day.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-5 p-6 sm:p-8"><span
+                        class="grid size-14 shrink-0 place-items-center rounded-full bg-acc/15 text-accd"><svg
+                            class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z" />
+                            <path d="M7 7h.01" />
+                        </svg></span>
+                    <div>
+                        <h3 class="text-xl">Fair prices</h3>
+                        <p class="mt-1 text-sm text-neutral-500">Generous plates at honest prices, dine in or order
+                            online.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bgd bg-white">
+            <div class="dec dec-r dec-tomato" aria-hidden="true"></div>
+            <div class="wrap sec grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
+                <div class="relative pb-14 pr-8 sm:pr-14" data-aos="fade-right">
+                    <div
+                        class="absolute -left-5 -top-5 hidden size-44 bg-[radial-gradient(#d9a441_2px,transparent_2px)] [background-size:16px_16px] opacity-70 sm:block">
+                    </div>
+                    <div class="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl"><img
+                            data-u="1559339352-11d035aa65de" data-w="900" alt="Our kitchen" loading="lazy"
+                            class="size-full object-cover"></div>
+                    <div
+                        class="absolute bottom-0 right-0 aspect-square w-1/2 overflow-hidden rounded-2xl border-8 border-white shadow-2xl">
+                        <img data-u="1414235077428-338989a2e8c0" data-w="500" alt="Signature dish" loading="lazy"
+                            class="size-full object-cover"></div>
+                    <div
+                        class="absolute left-3 top-10 grid size-28 place-items-center rounded-full border-4 border-white bg-acc text-center text-ink shadow-xl sm:-left-6">
+                        <div><b class="block font-display text-3xl leading-none">14</b><span
+                                class="text-xs font-medium leading-tight">years of<br>flavour</span></div>
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <h2 class="h2">Discover our story</h2>
+                    <p class="mt-5">Oliva opened in 2012 as a small family kitchen with eight tables and one wood oven.
+                        Today we cook for hundreds of guests every week, but our approach has not changed: buy well,
+                        cook simply and treat every guest like a neighbour.</p>
+                    <p class="mt-4">Our menu follows the seasons, our bread is baked every morning and every sauce is
+                        made from scratch.</p>
+                    <ul class="mt-7 grid gap-3 sm:grid-cols-2 text-ink">
+                        <li class="flex items-center gap-2"><i
+                                class="ri-checkbox-circle-fill text-xl text-acc"></i>Locally sourced produce</li>
+                        <li class="flex items-center gap-2"><i class="ri-checkbox-circle-fill text-xl text-acc"></i>Wood
+                            fired oven</li>
+                        <li class="flex items-center gap-2"><i
+                                class="ri-checkbox-circle-fill text-xl text-acc"></i>Bread baked every morning</li>
+                        <li class="flex items-center gap-2"><i
+                                class="ri-checkbox-circle-fill text-xl text-acc"></i>Private dining for 40</li>
+                    </ul>
+                    <div class="mt-9 grid grid-cols-3 gap-4 border-y border-line py-7 text-center sm:text-left">
+                        <p><b class="block font-display text-4xl text-accd"><span data-count="60">0</span>+</b><span
+                                class="text-sm text-neutral-500">Beverages</span></p>
+                        <p><b class="block font-display text-4xl text-accd"><span data-count="120">0</span>+</b><span
+                                class="text-sm text-neutral-500">Food items</span></p>
+                        <p><b class="block font-display text-4xl text-accd"><span data-count="18">0</span></b><span
+                                class="text-sm text-neutral-500">Expert cooks</span></p>
+                    </div>
+                    <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-5">
+                        <a href="pages/about.html" class="btn">More about us <i class="ri-arrow-right-line"></i></a>
+                        <div class="flex items-center gap-3"><span
+                                class="grid size-12 place-items-center rounded-full bg-acc/20 text-xl text-accd"><i
+                                    class="ri-phone-line"></i></span>
+                            <div class="leading-tight"><small class="text-neutral-500">Call to reserve</small><b
+                                    class="block text-ink">+1 234 567 8900</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="relative isolate overflow-hidden bg-ink py-24 text-center md:py-32">
+            <div class="absolute inset-0 -z-10 bg-cover bg-fixed bg-center"
+                style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1800&q=75')">
+            </div><span class="absolute inset-0 -z-10 bg-ink/60"></span>
+            <div class="wrap max-w-4xl" data-aos="fade-up">
+                <p class="font-medium text-acc">This month only</p>
+                <h2 class="mt-3 text-3xl text-white md:text-5xl">Business lunch, three courses for $25.90</h2>
+                <p class="mx-auto mt-5 max-w-xl text-white/75">Treat your team or your clients to a relaxed weekday
+                    lunch in a calm, welcoming room.</p>
+                <ul class="mt-10 grid gap-4 sm:grid-cols-3">
+                    <li class="rounded-xl border border-white/15 bg-white/5 p-6 backdrop-blur"><i
+                            class="ri-restaurant-2-line text-3xl text-acc"></i><b class="mt-2 block text-white">Three
+                            courses</b><span class="text-sm text-white/60">Starter, main and dessert</span></li>
+                    <li class="rounded-xl border border-white/15 bg-white/5 p-6 backdrop-blur"><i
+                            class="ri-time-line text-3xl text-acc"></i><b class="mt-2 block text-white">Monday to
+                            Friday</b><span class="text-sm text-white/60">Served 12:00 to 15:00</span></li>
+                    <li class="rounded-xl border border-white/15 bg-white/5 p-6 backdrop-blur"><i
+                            class="ri-cup-line text-3xl text-acc"></i><b class="mt-2 block text-white">Coffee
+                            included</b><span class="text-sm text-white/60">Espresso or filter tea</span></li>
+                </ul>
+                <p class="mt-10 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-white/80"><i
+                        class="ri-phone-fill text-xl text-acc"></i>Booking for a group? Call <a href="tel:+12345678900"
+                        class="font-semibold text-white underline decoration-acc underline-offset-4">+1 234 567 8900</a>
+                </p>
+            </div>
+        </section>
+        <section class="bgd bg-white">
+            <div class="dec dec-l dec-chili" aria-hidden="true"></div>
+            <div class="wrap sec">
+                <div class="mx-auto max-w-xl text-center" data-aos="fade-up">
+                    <h2 class="h2">Our daily offers</h2>
+                    <p class="mt-3 text-neutral-500">Three dishes our kitchen is proud of today.</p>
+                </div>
+                <div id="offers" class="mt-12 grid gap-8 md:grid-cols-3"></div>
+            </div>
+        </section>
+        <section class="bgd bg-cream">
+            <div class="dec dec-r dec-garlic" aria-hidden="true"></div>
+            <div class="wrap sec">
+                <div class="text-center" data-aos="fade-up">
+                    <h2 class="h2">Check our menu</h2>
+                    <p class="mx-auto mt-3 max-w-lg text-neutral-500">Browse by course and add your favourites to the
+                        cart.</p>
+                </div>
+                <div id="tabs" class="mt-10 mb-12 flex flex-wrap justify-center gap-1 border-b border-line"
+                    role="tablist"></div>
+                <div id="panels"></div>
+                <div class="mt-12 text-center"><a href="pages/menu.html" class="btn btn-d">See the full menu <i
+                            class="ri-arrow-right-line"></i></a></div>
+            </div>
+        </section>
+        <section class="bgd bg-white">
+            <div class="wrap sec grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+                <div class="relative mx-auto w-full max-w-md" data-aos="fade-right">
+                    <div class="absolute -bottom-4 -right-4 size-full rounded-2xl border-2 border-acc"></div>
+                    <div class="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl"><img
+                            data-u="1544025162-d76694265947" data-w="800" alt="Signature ribeye" loading="lazy"
+                            class="size-full object-cover"></div>
+                    <div class="absolute -left-3 bottom-10 rounded-xl bg-white px-5 py-4 shadow-xl sm:-left-8">
+                        <div class="flex items-center gap-0.5 text-acc"><i class="ri-star-fill"></i><i
+                                class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                                class="ri-star-fill"></i></div><b class="block text-ink">4.9 out of 5</b><span
+                            class="text-xs text-neutral-500">2,400+ guest reviews</span>
+                    </div>
+                </div>
+                <div class="min-w-0" data-aos="fade-left">
+                    <h2 class="h2">What our guests say</h2>
+                    <p class="mt-3 text-neutral-500">Real words from people who dined with us.</p>
+                    <div class="ts swiper mt-8 w-full overflow-hidden">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><i class="ri-double-quotes-l text-6xl leading-none text-acc"></i>
+                                <p class="mt-2 text-lg text-ink">The ribeye was perfectly cooked and the staff made our
+                                    anniversary feel special. We have already booked again for next month.</p>
+                                <div class="mt-6 flex items-center gap-4"><span
+                                        class="grid size-14 place-items-center rounded-full bg-acc font-display text-xl font-bold text-ink">T</span>
+                                    <div class="leading-tight"><b class="block text-ink">Tanvir Ahmed</b><span
+                                            class="text-sm text-neutral-500">Food blogger</span></div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide"><i class="ri-double-quotes-l text-6xl leading-none text-acc"></i>
+                                <p class="mt-2 text-lg text-ink">Best brunch in the neighbourhood. The eggs benedict and
+                                    the ricotta pancakes are my weekend ritual, and the coffee is excellent.</p>
+                                <div class="mt-6 flex items-center gap-4"><span
+                                        class="grid size-14 place-items-center rounded-full bg-acc font-display text-xl font-bold text-ink">N</span>
+                                    <div class="leading-tight"><b class="block text-ink">Nusrat Jahan</b><span
+                                            class="text-sm text-neutral-500">Regular guest</span></div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide"><i class="ri-double-quotes-l text-6xl leading-none text-acc"></i>
+                                <p class="mt-2 text-lg text-ink">We order lunch for the whole team every Friday.
+                                    Ordering online is easy, the portions are generous and the food arrives hot.</p>
+                                <div class="mt-6 flex items-center gap-4"><span
+                                        class="grid size-14 place-items-center rounded-full bg-acc font-display text-xl font-bold text-ink">R</span>
+                                    <div class="leading-tight"><b class="block text-ink">Rafiq Hasan</b><span
+                                            class="text-sm text-neutral-500">Office manager</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex items-center gap-3"><button type="button"
+                            class="ts-prev grid size-11 place-items-center rounded-full border border-line text-xl transition hover:border-acc hover:bg-acc"
+                            aria-label="Previous"><i class="ri-arrow-left-line"></i></button><button type="button"
+                            class="ts-next grid size-11 place-items-center rounded-full border border-line text-xl transition hover:border-acc hover:bg-acc"
+                            aria-label="Next"><i class="ri-arrow-right-line"></i></button>
+                        <div class="ts-pg ml-3 flex gap-1"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bgd bg-cream">
+            <div class="wrap sec">
+                <div class="mb-10 flex flex-wrap items-end justify-between gap-4" data-aos="fade-up">
+                    <h2 class="h2">Our food gallery</h2><a href="pages/gallery.html" class="btn btn-d">View gallery</a>
+                </div>
+                <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+                    <div class="gl group relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-lg"
+                        data-aos="zoom-in"><img data-u="1517248135467-4c7edcad34c4" data-w="800" alt="Oliva gallery"
+                            loading="lazy"
+                            class="size-full object-cover transition duration-700 group-hover:scale-110"><span
+                            class="absolute inset-0 grid place-items-center bg-acc/80 text-4xl text-ink opacity-0 transition group-hover:opacity-100"><i
+                                class="ri-zoom-in-line"></i></span></div>
+                    <div class="gl group relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-lg"
+                        data-aos="zoom-in"><img data-u="1565299624946-b28f40a0ae38" data-w="800" alt="Oliva gallery"
+                            loading="lazy"
+                            class="size-full object-cover transition duration-700 group-hover:scale-110"><span
+                            class="absolute inset-0 grid place-items-center bg-acc/80 text-4xl text-ink opacity-0 transition group-hover:opacity-100"><i
+                                class="ri-zoom-in-line"></i></span></div>
+                    <div class="gl group relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-lg"
+                        data-aos="zoom-in"><img data-u="1544025162-d76694265947" data-w="800" alt="Oliva gallery"
+                            loading="lazy"
+                            class="size-full object-cover transition duration-700 group-hover:scale-110"><span
+                            class="absolute inset-0 grid place-items-center bg-acc/80 text-4xl text-ink opacity-0 transition group-hover:opacity-100"><i
+                                class="ri-zoom-in-line"></i></span></div>
+                    <div class="gl group relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-lg"
+                        data-aos="zoom-in"><img data-u="1555396273-367ea4eb4db5" data-w="800" alt="Oliva gallery"
+                            loading="lazy"
+                            class="size-full object-cover transition duration-700 group-hover:scale-110"><span
+                            class="absolute inset-0 grid place-items-center bg-acc/80 text-4xl text-ink opacity-0 transition group-hover:opacity-100"><i
+                                class="ri-zoom-in-line"></i></span></div>
+                    <div class="gl group relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-lg"
+                        data-aos="zoom-in"><img data-u="1551024601-bec78aea704b" data-w="800" alt="Oliva gallery"
+                            loading="lazy"
+                            class="size-full object-cover transition duration-700 group-hover:scale-110"><span
+                            class="absolute inset-0 grid place-items-center bg-acc/80 text-4xl text-ink opacity-0 transition group-hover:opacity-100"><i
+                                class="ri-zoom-in-line"></i></span></div>
+                    <div class="gl group relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-lg"
+                        data-aos="zoom-in"><img data-u="1621996346565-e3dbc646d9a9" data-w="800" alt="Oliva gallery"
+                            loading="lazy"
+                            class="size-full object-cover transition duration-700 group-hover:scale-110"><span
+                            class="absolute inset-0 grid place-items-center bg-acc/80 text-4xl text-ink opacity-0 transition group-hover:opacity-100"><i
+                                class="ri-zoom-in-line"></i></span></div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-white">
+            <div class="wrap sec">
+                <div class="text-center" data-aos="fade-up">
+                    <h2 class="h2">Our experienced chefs</h2>
+                </div>
+                <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="group text-center" data-aos="fade-up">
+                        <div class="relative aspect-[4/5] overflow-hidden rounded-xl bg-sand"><img
+                                data-u="1577219491135-ce391730fb2c" data-w="600" alt="Henry Nichols" loading="lazy"
+                                class="size-full object-cover transition duration-700 group-hover:scale-105">
+                            <div
+                                class="absolute inset-x-0 bottom-0 flex translate-y-full justify-center gap-2 bg-ink/85 p-3 transition duration-300 group-hover:translate-y-0">
+                                <a href="#" aria-label="Facebook"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-facebook-fill"></i></a><a href="#" aria-label="X"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-twitter-x-line"></i></a><a href="#" aria-label="Instagram"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-instagram-line"></i></a></div>
+                        </div>
+                        <h3 class="mt-5 text-2xl">Henry Nichols</h3>
+                        <p class="text-neutral-500">Executive Chef</p>
+                    </div>
+                    <div class="group text-center" data-aos="fade-up">
+                        <div class="relative aspect-[4/5] overflow-hidden rounded-xl bg-sand"><img
+                                data-u="1583394838336-acd977736f90" data-w="600" alt="Sofia Marino" loading="lazy"
+                                class="size-full object-cover transition duration-700 group-hover:scale-105">
+                            <div
+                                class="absolute inset-x-0 bottom-0 flex translate-y-full justify-center gap-2 bg-ink/85 p-3 transition duration-300 group-hover:translate-y-0">
+                                <a href="#" aria-label="Facebook"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-facebook-fill"></i></a><a href="#" aria-label="X"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-twitter-x-line"></i></a><a href="#" aria-label="Instagram"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-instagram-line"></i></a></div>
+                        </div>
+                        <h3 class="mt-5 text-2xl">Sofia Marino</h3>
+                        <p class="text-neutral-500">Pastry Chef</p>
+                    </div>
+                    <div class="group text-center" data-aos="fade-up">
+                        <div class="relative aspect-[4/5] overflow-hidden rounded-xl bg-sand"><img
+                                data-u="1600565193348-f74bd3c7ccdf" data-w="600" alt="Ronald Arone" loading="lazy"
+                                class="size-full object-cover transition duration-700 group-hover:scale-105">
+                            <div
+                                class="absolute inset-x-0 bottom-0 flex translate-y-full justify-center gap-2 bg-ink/85 p-3 transition duration-300 group-hover:translate-y-0">
+                                <a href="#" aria-label="Facebook"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-facebook-fill"></i></a><a href="#" aria-label="X"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-twitter-x-line"></i></a><a href="#" aria-label="Instagram"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-instagram-line"></i></a></div>
+                        </div>
+                        <h3 class="mt-5 text-2xl">Ronald Arone</h3>
+                        <p class="text-neutral-500">General Manager</p>
+                    </div>
+                    <div class="group text-center" data-aos="fade-up">
+                        <div class="relative aspect-[4/5] overflow-hidden rounded-xl bg-sand"><img
+                                data-u="1581299894007-aaa50297cf16" data-w="600" alt="Michael Chen" loading="lazy"
+                                class="size-full object-cover transition duration-700 group-hover:scale-105">
+                            <div
+                                class="absolute inset-x-0 bottom-0 flex translate-y-full justify-center gap-2 bg-ink/85 p-3 transition duration-300 group-hover:translate-y-0">
+                                <a href="#" aria-label="Facebook"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-facebook-fill"></i></a><a href="#" aria-label="X"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-twitter-x-line"></i></a><a href="#" aria-label="Instagram"
+                                    class="grid size-9 place-items-center rounded-full border border-white/40 text-white hover:border-acc hover:bg-acc hover:text-ink"><i
+                                        class="ri-instagram-line"></i></a></div>
+                        </div>
+                        <h3 class="mt-5 text-2xl">Michael Chen</h3>
+                        <p class="text-neutral-500">Sous Chef</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bgd bg-ink">
+            <div class="wrap sec grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+                <div data-aos="fade-right">
+                    <h2 class="font-display text-3xl font-semibold text-white md:text-5xl">Make a reservation</h2>
+                    <p class="mt-5 max-w-md text-white/70">Booking a table online is easy. Pick a date and time and we
+                        will confirm by email within the hour. For parties above ten, please call us.</p>
+                    <p class="mt-8 flex items-center gap-4 text-white"><span
+                            class="grid size-14 place-items-center rounded-full bg-acc/15 text-2xl text-acc"><i
+                                class="ri-phone-line"></i></span><span class="font-display text-2xl font-semibold">+1
+                            234 567 8900</span></p>
+                </div>
+                <div data-aos="fade-left">
+                    <form class="grid gap-4 sm:grid-cols-2" data-ok="Table request sent. We will confirm by email.">
+                        <div><label class="mb-1.5 block text-sm font-semibold text-white" for="rnd">Full
+                                name</label><input id="rnd" class="inp-d" placeholder="Enter your name" required></div>
+                        <div><label class="mb-1.5 block text-sm font-semibold text-white" for="red">Email
+                                address</label><input id="red" class="inp-d" type="email" placeholder="Enter your email"
+                                required></div>
+                        <div><label class="mb-1.5 block text-sm font-semibold text-white" for="rpd">Phone
+                                number</label><input id="rpd" class="inp-d" type="tel"
+                                placeholder="Enter your phone number" required></div>
+                        <div><label class="mb-1.5 block text-sm font-semibold text-white"
+                                for="rgd">Guests</label><select id="rgd" class="inp-d" required>
+                                <option value="" disabled selected>Select number of guests</option>
+                                <option>1 person</option>
+                                <option>2 people</option>
+                                <option>3 people</option>
+                                <option>4 people</option>
+                                <option>6 people</option>
+                                <option>8+ people</option>
+                            </select></div>
+                        <div><label class="mb-1.5 block text-sm font-semibold text-white" for="rdd">Date</label><input
+                                id="rdd" class="inp-d" type="text" placeholder="Select a date"
+                                onfocus="this.type='date'" onblur="if(!this.value)this.type='text'" required></div>
+                        <div><label class="mb-1.5 block text-sm font-semibold text-white" for="rtd">Time</label><select
+                                id="rtd" class="inp-d" required>
+                                <option value="" disabled selected>Select a time</option>
+                                <option>12:00</option>
+                                <option>13:00</option>
+                                <option>19:00</option>
+                                <option>20:00</option>
+                                <option>21:00</option>
+                            </select></div>
+                        <div class="sm:col-span-2"><label class="mb-1.5 block text-sm font-semibold text-white"
+                                for="rmd">Special requests</label><textarea id="rmd" class="inp-d" rows="3"
+                                placeholder="Allergies, celebrations or seating preferences"></textarea></div>
+                        <div class="sm:col-span-2"><button class="btn w-full">Reserve your table</button></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section class="bg-white">
+            <div class="wrap sec">
+                <div class="mb-10 flex flex-wrap items-end justify-between gap-4" data-aos="fade-up">
+                    <h2 class="h2">Our food update</h2><a href="pages/blog.html" class="btn btn-d">All posts</a>
+                </div>
+                <div class="grid gap-8 md:grid-cols-3">
+                    <article class="group" data-aos="fade-up"><a href="pages/blog-details.html"
+                            class="relative block aspect-[16/10] overflow-hidden rounded-xl"><img
+                                data-u="1414235077428-338989a2e8c0" data-w="800"
+                                alt="Plating trends: how sauces became art on the plate" loading="lazy"
+                                class="size-full object-cover transition duration-700 group-hover:scale-105"><span
+                                class="absolute left-4 top-4 rounded bg-acc px-3 py-1 text-xs font-semibold text-ink">June
+                                11, 2026</span></a>
+                        <h3 class="mt-5 text-2xl leading-snug"><a href="pages/blog-details.html"
+                                class="transition hover:text-accd">Plating trends: how sauces became art on the
+                                plate</a></h3><a href="pages/blog-details.html"
+                            class="mt-3 inline-flex items-center gap-1 font-semibold text-accd">Read more <i
+                                class="ri-arrow-right-line transition group-hover:translate-x-1"></i></a>
+                    </article>
+                    <article class="group" data-aos="fade-up"><a href="pages/blog-details.html"
+                            class="relative block aspect-[16/10] overflow-hidden rounded-xl"><img
+                                data-u="1565299624946-b28f40a0ae38" data-w="800"
+                                alt="Why a wood fired oven changes everything" loading="lazy"
+                                class="size-full object-cover transition duration-700 group-hover:scale-105"><span
+                                class="absolute left-4 top-4 rounded bg-acc px-3 py-1 text-xs font-semibold text-ink">June
+                                04, 2026</span></a>
+                        <h3 class="mt-5 text-2xl leading-snug"><a href="pages/blog-details.html"
+                                class="transition hover:text-accd">Why a wood fired oven changes everything</a></h3><a
+                            href="pages/blog-details.html"
+                            class="mt-3 inline-flex items-center gap-1 font-semibold text-accd">Read more <i
+                                class="ri-arrow-right-line transition group-hover:translate-x-1"></i></a>
+                    </article>
+                    <article class="group" data-aos="fade-up"><a href="pages/blog-details.html"
+                            class="relative block aspect-[16/10] overflow-hidden rounded-xl"><img
+                                data-u="1551024601-bec78aea704b" data-w="800"
+                                alt="Five desserts that taste better with a pinch of salt" loading="lazy"
+                                class="size-full object-cover transition duration-700 group-hover:scale-105"><span
+                                class="absolute left-4 top-4 rounded bg-acc px-3 py-1 text-xs font-semibold text-ink">May
+                                28, 2026</span></a>
+                        <h3 class="mt-5 text-2xl leading-snug"><a href="pages/blog-details.html"
+                                class="transition hover:text-accd">Five desserts that taste better with a pinch of
+                                salt</a></h3><a href="pages/blog-details.html"
+                            class="mt-3 inline-flex items-center gap-1 font-semibold text-accd">Read more <i
+                                class="ri-arrow-right-line transition group-hover:translate-x-1"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    <section class="border-t border-line bg-cream">
+        <div class="wrap grid gap-10 py-14 text-center md:grid-cols-3 md:gap-0 md:divide-x md:divide-line md:py-16">
+            <div class="md:px-8"><span
+                    class="mx-auto grid size-14 place-items-center rounded-full bg-acc text-2xl text-ink"><i
+                        class="ri-phone-line"></i></span>
+                <h3 class="mt-4 text-xl">Contact us</h3>
+                <p class="mt-1 text-neutral-500">+1 234 567 8900<br>hello@oliva-restaurant.com</p>
+            </div>
+            <div class="md:px-8"><span
+                    class="mx-auto grid size-14 place-items-center rounded-full bg-acc text-2xl text-ink"><i
+                        class="ri-map-pin-line"></i></span>
+                <h3 class="mt-4 text-xl">Find us</h3>
+                <p class="mt-1 text-neutral-500">128 Maple Street, Brooklyn<br>New York, NY 11201</p>
+            </div>
+            <div class="md:px-8"><span
+                    class="mx-auto grid size-14 place-items-center rounded-full bg-acc text-2xl text-ink"><i
+                        class="ri-time-line"></i></span>
+                <h3 class="mt-4 text-xl">Opening hours</h3>
+                <p class="mt-1 text-neutral-500">Mon to Fri, 9:00 to 22:00<br>Sat 9:00 to 23:00, Sun 8:00 to 22:00</p>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-ink text-white/70">
+        <div class="wrap py-14 text-center"><a href="index.html"
+                class="font-display text-4xl font-bold text-white">Oliva<span class="text-acc">.</span></a>
+            <p class="mx-auto mt-4 max-w-md">A neighbourhood restaurant serving seasonal Italian and Mediterranean food
+                from breakfast to late dinner.</p>
+            <div class="mt-7 flex justify-center gap-3"><a
+                    class="grid size-11 place-items-center rounded-full border border-white/20 text-lg transition hover:border-acc hover:bg-acc hover:text-ink"
+                    href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a><a
+                    class="grid size-11 place-items-center rounded-full border border-white/20 text-lg transition hover:border-acc hover:bg-acc hover:text-ink"
+                    href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a><a
+                    class="grid size-11 place-items-center rounded-full border border-white/20 text-lg transition hover:border-acc hover:bg-acc hover:text-ink"
+                    href="#" aria-label="X"><i class="ri-twitter-x-line"></i></a><a
+                    class="grid size-11 place-items-center rounded-full border border-white/20 text-lg transition hover:border-acc hover:bg-acc hover:text-ink"
+                    href="#" aria-label="YouTube"><i class="ri-youtube-line"></i></a></div>
+        </div>
+        <p class="border-t border-white/10 px-5 py-5 text-center text-sm">© 2026 Oliva. All rights reserved. Photos from
+            Unsplash.</p>
+    </footer>
+    <div id="toast"></div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.min.js"></script>
+</body>
+
+</html>
